@@ -1,0 +1,45 @@
+export const tujuanBus = [
+  "Lampung",
+  "Palembang",
+  "Padang",
+  "Medan",
+  "Bandung",
+  "Tasik",
+  "kebumen",
+  "Cirebon",
+  "Tegal",
+  "Pekalongan",
+  "Semarang",
+  "Kudus",
+  "Jepara",
+  "Solo",
+  "Wonogiri",
+  "Jogja",
+  "klaten",
+  "Surabaya",
+  "Malang",
+  "Madiun",
+  "Ponorogo",
+  "Banyuwangi",
+  "Madura",
+  "Bali",
+];
+
+export const tujuanKapal = [
+  "Sumatra",
+  "Kalimantan",
+  "Sulawesi",
+  "NTB",
+  "NTT",
+  "Papua",
+];
+
+export const tujuanKereta = [
+    "Cirebon",
+    "Tegal",
+    "Pekalongan",
+    "Semarang",
+    "Solo",
+    "Jogja",
+    "Surabaya",
+];
