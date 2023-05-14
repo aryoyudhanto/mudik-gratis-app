@@ -18,7 +18,7 @@ const Mudik = () => {
   const [tujuan, setTujuan] = useState<string>("");
   const [seat, setSeat] = useState<string[]>([]);
   const [noAntri, setNoAntri] = useState<number>()
-  const [cookie, setCookie] = useCookies();
+  const [cookie, _setCookie] = useCookies();
   const navigate = useNavigate();
 
   useEffect(() => {

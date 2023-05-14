@@ -10,7 +10,7 @@ import CustomInput from "../components/CustomInput";
 
 const VerifikasiTiket = () => {
   const [verif, setVerif] = useState<string>("");
-  const [cookie, setCookie] = useCookies();
+  const [cookie, _setCookie] = useCookies();
   const navigate = useNavigate();
 
   useEffect(() => {

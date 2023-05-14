@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import Logo from "../assets/pgn-logo.svg";
 
 const Navbar = () => {
-  const [cookie, setCookie, removeCookie] = useCookies();
+  const [cookie, _setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
 
   function onLogout() {
