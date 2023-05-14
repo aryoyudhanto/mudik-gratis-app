@@ -12,7 +12,7 @@ const index = () => {
   const [passType, setPassType] = useState<string>("password");
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [cookie, setCookie] = useCookies();
+  const [_cookie, setCookie] = useCookies();
   const navigate = useNavigate();
 
   function loginHandler(e: React.FormEvent<HTMLFormElement>) {
