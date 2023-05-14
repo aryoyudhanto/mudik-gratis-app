@@ -15,7 +15,7 @@ export const tujuanBus = [
   "Solo",
   "Wonogiri",
   "Jogja",
-  "klaten",
+  "Klaten",
   "Surabaya",
   "Malang",
   "Madiun",

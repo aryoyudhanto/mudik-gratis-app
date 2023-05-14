@@ -16,35 +16,47 @@ const Mudik = () => {
   const [armada, setArmada] = useState<string>("");
   const [tanggal, setTanggal] = useState<string>("");
   const [tujuan, setTujuan] = useState<string>("");
-  const [seat, setSeat] = useState<string[]>();
-  const [color, setColor] = useState<string>("gray")
+  const [seat, setSeat] = useState<string[]>([]);
+  const [noAntri, setNoAntri] = useState<number>()
   const [cookie, setCookie] = useCookies();
   const navigate = useNavigate();
 
   useEffect(() => {
+    generateRandomNumber()
     if (!cookie.token) {
       navigate("/home");
     }
   }, []);
 
-  function toogleColor() {
-    if (color === "gray") {
-      setColor("blue");
-    }
-    if (color === "blue") {
-      setColor("gray");
+  function orderTiket(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (nama && telp && armada && tanggal && tujuan) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        text: "Order Tiket sukses",
+        showConfirmButton: true,
+        timer: 2000,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Isi form terlebih dahulu",
+      });
     }
   }
 
-  function orderTiket(e: React.FormEvent<HTMLFormElement>){
-    e.preventDefault();
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      text: "Order Tiket sukses",
-      showConfirmButton: true,
-      timer: 2000,
-    });
+  function seatPemudik(label: string) {
+    if (seat.includes(label)) {
+      setSeat(seat.filter((item) => item !== label));
+    } else {
+      setSeat([...seat, label]);
+    }
+  }
+
+  function generateRandomNumber() {
+    return setNoAntri(Math.floor(10000000 + Math.random() * 900000));
   }
 
   return (
@@ -147,7 +159,11 @@ const Mudik = () => {
                             {label}
                           </label>
                         ) : (
-                          <label key={index} className="btn">
+                          <label
+                            key={index}
+                            className="btn bg-gray-700"
+                            onClick={() => seatPemudik(label)}
+                          >
                             {label}
                           </label>
                         )
@@ -159,7 +175,11 @@ const Mudik = () => {
                             {label}
                           </label>
                         ) : (
-                          <label key={index} className="btn">
+                          <label
+                            key={index}
+                            className="btn bg-gray-700"
+                            onClick={() => seatPemudik(label)}
+                          >
                             {label}
                           </label>
                         )
@@ -167,16 +187,37 @@ const Mudik = () => {
                     ) : null || armada == "Kapal" ? (
                       kapal.map((label, index) =>
                         label == "" || label == "Pintu" ? (
-                          <label key={index} className={`btn btn-ghost`}>
+                          <label
+                            key={index}
+                            className={`btn btn-ghost`}
+                            onClick={() => seatPemudik(label)}
+                          >
                             {label}
                           </label>
                         ) : (
-                          <label key={index} className={`btn bg-${color}-700`} onClick={()=>toogleColor()}>
+                          <label key={index} className={`btn bg-gray-700`}>
                             {label}
                           </label>
                         )
                       )
                     ) : null}
+                  </div>
+                </div>
+                <div className="flex w-full mb-5">
+                  <div className="flex w-16 md:w-24">
+                    <p className="font-semibold text-black text-center">
+                      Review
+                    </p>
+                  </div>
+                  <div className="w-full h-72 border-2 rounded-2xl p-1">
+                    <p className="text-center text-md md:text-xl font-bold mb-1">Tiket Mudik Gratis</p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">No Antri : <span className="text-base md:text-lg font-bold">{noAntri}</span> </p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">Nama : <span className="text-base md:text-lg font-bold">{nama}</span> </p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">Telp : <span className="text-base md:text-lg font-bold">{telp}</span> </p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">Armada : <span className="text-base md:text-lg font-bold">{armada}</span> </p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">Tanggal : <span className="text-base md:text-lg font-bold">{tanggal}</span> </p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">Tujuan : <span className="text-base md:text-lg font-bold">{tujuan}</span> </p>
+                    <p className="ml-2 md:ml-5 mb-2 font-semibold text-sm md:text-base">Seat : <span className="text-base md:text-lg font-bold">{seat.join(",")}</span> </p>
                   </div>
                 </div>
               </div>
