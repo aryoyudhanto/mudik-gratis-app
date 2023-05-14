@@ -17,8 +17,8 @@ Link: https://mudik-gratis-app.vercel.app/
 
 ## Login 
 
-email: eve.holt@reqres.in
-password: cityslicka
+- email: eve.holt@reqres.in
+- password: cityslicka
 
 ## Built With
 
