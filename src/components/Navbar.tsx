@@ -76,7 +76,9 @@ const Navbar = () => {
                 <Link to="/mudik">
                   <p className="active:bg-gray-500">Tiket Mudik</p>
                 </Link>
-                <p className="active:bg-gray-500">Verifikasi Tiket</p>
+                <Link to="/verif">
+                  <p className="active:bg-gray-500">Verifikasi Tiket</p>
+                </Link>
                 <p className="active:bg-gray-500" onClick={() => onLogout()}>
                   Logout
                 </p>

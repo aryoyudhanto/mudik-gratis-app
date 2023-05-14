@@ -24,7 +24,7 @@ const Mudik = () => {
   useEffect(() => {
     generateRandomNumber()
     if (!cookie.token) {
-      navigate("/home");
+      navigate("/");
     }
   }, []);
 
